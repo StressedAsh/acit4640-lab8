@@ -28,12 +28,12 @@ source "amazon-ebs" "ubuntu" {
 
 build {
   sources = ["source.amazon-ebs.ubuntu"]
-  provisioner "ansible" {
+  provisioner "ansible-local" {
     playbook_file = "ansible/playbook.yml"
     ansible_env_vars = ["ANSIBLE_HOST_KEY_CHECKING=False", "ANSIBLE_NOCOWS=1"]
     extra_arguments = ["--extra-vars", "-vvv"]
   }
-  builders {
+    builders {
     communicator = "ssh"
     ssh_username = var.ssh_username
   }
