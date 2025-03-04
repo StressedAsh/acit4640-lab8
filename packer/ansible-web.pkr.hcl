@@ -24,7 +24,7 @@ source "amazon-ebs" "ubuntu" {
     most_recent = true
     owners = ["self"]
   }
-  ssh_username = var.ssh_username
+  user = var.ssh_username
 }
 
 build {
