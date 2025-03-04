@@ -24,8 +24,6 @@ source "amazon-ebs" "ubuntu" {
     most_recent = true
     owners = ["self"]
   }
-  communicator = "ssh"
-  ssh_username = var.ssh_username
 }
 
 build {
@@ -34,5 +32,9 @@ build {
     playbook_file = "ansible/playbook.yml"
     ansible_env_vars = ["ANSIBLE_HOST_KEY_CHECKING=False", "ANSIBLE_NOCOWS=1"]
     extra_arguments = ["--extra-vars", "-vvv"]
+  }
+  builders {
+    communicator = "ssh"
+    ssh_username = var.ssh_username
   }
 }
