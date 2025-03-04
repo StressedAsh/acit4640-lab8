@@ -24,7 +24,8 @@ source "amazon-ebs" "ubuntu" {
     most_recent = true
     owners = ["self"]
   }
-  user = var.ssh_username
+  communicator = "ssh"
+  ssh_username = var.ssh_username
 }
 
 build {
