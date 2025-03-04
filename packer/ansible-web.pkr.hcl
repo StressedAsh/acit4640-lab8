@@ -8,7 +8,7 @@ packer {
       version = ">= 1.1.2"
       source  = "github.com/hashicorp/ansible"
     }
-
+  }
 }
 
 source "amazon-ebs" "ubuntu" {
