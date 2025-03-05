@@ -33,8 +33,5 @@ build {
     ansible_env_vars = ["ANSIBLE_HOST_KEY_CHECKING=False", "ANSIBLE_NOCOWS=1"]
     extra_arguments = ["--extra-vars", "-vvv"]
   }
-    builders {
-    communicator = "ssh"
-    ssh_username = var.ssh_username
-  }
+    user = var.ssh_username
 }
