@@ -5,7 +5,7 @@ packer {
       version = "> 1.0.0"
     }
     ansible = {
-      version = ">= 1.1.2"
+      version = ">= 1.3"
       source  = "github.com/hashicorp/ansible"
     }
   }
@@ -24,14 +24,15 @@ source "amazon-ebs" "ubuntu" {
     most_recent = true
     owners = ["self"]
   }
+  ssh_username = "ubuntu"
 }
 
 build {
   sources = ["source.amazon-ebs.ubuntu"]
-  provisioner "ansible-local" {
-    playbook_file = "ansible/playbook.yml"
+  provisioner "ansible" {
+    playbook_file = "../ansible/playbook.yml"
     ansible_env_vars = ["ANSIBLE_HOST_KEY_CHECKING=False", "ANSIBLE_NOCOWS=1"]
     extra_arguments = ["--extra-vars", "-vvv"]
-  }
     user = var.ssh_username
+  }
 }

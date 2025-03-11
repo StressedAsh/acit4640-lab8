@@ -23,6 +23,7 @@ fi
 if [[ ! -f $1 ]]; then
   err "path to public key for import is incorrect, file does not exist"
 else
+  echo $1
   public_key_file="$1"
 fi
 
